@@ -1,4 +1,4 @@
-package med.voll.api.model.medico;
+package med.voll.api.model.medico.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.api.model.endereco.DadosEndereco;
+import med.voll.api.model.medico.Especialidade;
 
 public record DadosCadastroMedico(
 

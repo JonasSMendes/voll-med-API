@@ -22,8 +22,6 @@ public class AgendaDeConsultas {
     private PacienteRepository pacienteRepository;
 
     public void agendar(DadosAgendamentoConsulta dados){
-
-
         if (!pacienteRepository.existsById(dados.idPaciente())){
             throw new ValidacaoException("Id do paciente não existe");
         }
@@ -32,13 +30,20 @@ public class AgendaDeConsultas {
         }
 
 
-        var paciente = pacienteRepository.findById(dados.idPaciente()).get();
-       // var medico = EscolherMedico(dados);
-       // var consulta = new Consulta(null, medico, paciente, dados.data());
-        // consultaRepository.save(consulta);
+        var paciente = pacienteRepository.getReferenceById(dados.idPaciente());
+        var medico = EscolherMedico(dados);
+        var consulta = new Consulta(null, medico, paciente, dados.data());
+         consultaRepository.save(consulta);
     }
 
-//    private Medico EscolherMedico(DadosAgendamentoConsulta dados) {
-//
-//    }
+    private Medico EscolherMedico(DadosAgendamentoConsulta dados) {
+        if (dados.idMedico() != null){
+            return medicoRepository.getReferenceById(dados.idMedico());
+        }
+        if (dados.especialidade() == null){
+            throw new ValidacaoException("Especialidade é obrigatoria quando o medico não for escolhido");
+        }
+
+        return medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
+    }
 }

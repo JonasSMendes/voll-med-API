@@ -2,6 +2,7 @@ package med.voll.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.voll.api.domain.paciente.DadosAtulizacaoPaciente;
 import med.voll.api.domain.paciente.DadosCadastroPaciente;
 import med.voll.api.domain.paciente.DadosDetalhamentoPaciente;
 import med.voll.api.domain.paciente.Paciente;
@@ -51,7 +52,7 @@ public class PacienteController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity editandoPaciente(@RequestBody @Valid DadosDetalhamentoPaciente dados){
+    public ResponseEntity editandoPaciente(@RequestBody @Valid DadosAtulizacaoPaciente dados){
         var result = repository.getReferenceById(dados.id());
 
         return ResponseEntity.ok(new DadosDetalhamentoPaciente(result));

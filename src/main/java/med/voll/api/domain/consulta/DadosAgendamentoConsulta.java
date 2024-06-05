@@ -8,10 +8,7 @@ import java.time.LocalDateTime;
 
 public record DadosAgendamentoConsulta(
         Long idPaciente,
-
-        @NotNull
         Long idMedico,
-
         @NotNull
         @Future
         LocalDateTime data,

@@ -22,5 +22,11 @@ public class CancelamentoConsulta {
     @JoinColumn(name = "consulta_id")
     Consulta consulta;
 
+    @Enumerated(EnumType.STRING)
     MotivoCancelamento motivo;
+
+    public CancelamentoConsulta(Consulta consulta, MotivoCancelamento motivo) {
+        this.consulta = consulta;
+        this.motivo = motivo;
+    }
 }

@@ -6,5 +6,6 @@ import med.voll.api.domain.consulta.Consulta;
 
 public record DadosCancelamentoConsulta(
         Long idConsulta,
+        @NotNull
         MotivoCancelamento motivo) {
 }

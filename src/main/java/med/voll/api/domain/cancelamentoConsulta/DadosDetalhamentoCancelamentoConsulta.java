@@ -6,6 +6,10 @@ public record DadosDetalhamentoCancelamentoConsulta(
         MotivoCancelamento motivo
 ) {
     public DadosDetalhamentoCancelamentoConsulta(CancelamentoConsulta cancelamento){
-        this(cancelamento.getId(), cancelamento.getConsulta().getId(),cancelamento.getMotivo());
+        this(
+                cancelamento.getId(),
+                cancelamento.getConsulta().getId(),
+                cancelamento.getMotivo()
+        );
     }
 }

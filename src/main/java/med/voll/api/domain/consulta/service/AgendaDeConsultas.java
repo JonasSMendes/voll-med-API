@@ -62,8 +62,8 @@ public class AgendaDeConsultas {
             throw new ValidacaoException("Especialidade é obrigatoria quando o medico não for escolhido");
         }
 
-        return medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data())
-                .orElseThrow(() -> new ValidacaoException("Nenhum médico disponível para a especialidade e data selecionadas"));
+        return medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
+
 
     }
 }

@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosAtenticacao;
 import med.voll.api.domain.usuario.Usuario;
@@ -25,6 +26,7 @@ public class AutenticacaoController {
     private TokenService tokenService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAtenticacao dados){
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var authentication = manager.authenticate(authenticationToken);

@@ -1,6 +1,7 @@
 package med.voll.api.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.cancelamentoConsulta.DadosCancelamentoConsulta;
 import med.voll.api.domain.cancelamentoConsulta.service.CancelamentoConsultaService;
@@ -20,6 +21,7 @@ public class CancelamentoConsultaController {
     private CancelamentoConsultaService cancelamento;
 
     @PostMapping
+    @Transactional
     public ResponseEntity cancelamentoConsulta(@RequestBody @Valid DadosCancelamentoConsulta dados){
       var dto = cancelamento.cancelar(dados);
       return ResponseEntity.ok(dados);

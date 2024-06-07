@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.domain.endereco.DadosEndereco;
 import med.voll.api.domain.endereco.Endereco;
 
 @Entity(name = "Paciente")
@@ -25,7 +26,7 @@ public class Paciente {
     @Column(unique = true)
     private String cpf;
     @Embedded
-    private Endereco endereco;
+    private DadosEndereco endereco;
     private Boolean ativo;
 
 
